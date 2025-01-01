@@ -20,7 +20,8 @@ linksRouter.get('/:id', async (req, res, next) => {
     if (!oneLink) {
       res.status(404).json({ error: 'No link Found' });
     }
-    res.status(200).send(oneLink);
+    console.log(oneLink[0].originalUrl);
+    res.status(301).redirect(`${oneLink[0].originalUrl}`);
   } catch (error) {
     next(error);
   }
